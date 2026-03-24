@@ -103,13 +103,16 @@ const LoginPage = () => {
             </button>
           </div>
 
-          <div className="text-center">
-            <p className="text-sm text-gray-600">
-              Don't have an account?{' '}
-              <a href="/register" className="font-medium text-blue-600 hover:text-blue-500">
-                Sign up
+          <div className="text-center text-sm text-gray-600">
+            <p className="mb-3">Don't have an account?</p>
+            <div className="space-y-2">
+              <a href="/register/patient" className="block font-medium text-blue-600 hover:text-blue-500">
+                Register as Patient
               </a>
-            </p>
+              <a href="/register/doctor" className="block font-medium text-green-600 hover:text-green-500">
+                Register as Doctor
+              </a>
+            </div>
           </div>
         </form>
       </div>

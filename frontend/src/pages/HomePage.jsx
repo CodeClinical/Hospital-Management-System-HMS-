@@ -8,12 +8,15 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold mb-4">Welcome to Hospital Management System</h1>
           <p className="text-xl mb-8">Efficient healthcare management at your fingertips</p>
-          <div className="space-x-4">
-            <a href="/login" className="inline-block bg-white text-blue-600 px-6 py-3 rounded-md font-semibold hover:bg-gray-100">
-              Get Started
+          <div className="space-x-4 flex flex-wrap gap-4">
+            <a href="/register/patient" className="inline-block bg-white text-blue-600 px-6 py-3 rounded-md font-semibold hover:bg-gray-100">
+              Register as Patient
             </a>
-            <a href="/about" className="inline-block border-2 border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700">
-              Learn More
+            <a href="/register/doctor" className="inline-block bg-green-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-600">
+              Register as Doctor
+            </a>
+            <a href="/login" className="inline-block border-2 border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700">
+              Sign In
             </a>
           </div>
         </div>
