@@ -1,53 +1,98 @@
 # Hospital Management System (HMS)
 
-Hospital Management System (HMS) is a fullstack web application designed with a mobile-first approach to manage patients, doctors, appointments, and prescriptions efficiently.
+Hospital Management System (HMS) is a comprehensive fullstack web application designed with a mobile-first approach to manage patients, doctors, appointments, and prescriptions efficiently. This project demonstrates modern web development practices with React, Node.js/Express, and MongoDB.
 
-## Objectives
+## 🚀 Quick Start
 
-- User-friendly mobile-first UI
-- Secure authentication system
-- Scalable backend architecture
-- Efficient database management
+### Prerequisites
+- Node.js (v14+)
+- MongoDB (local or MongoDB Atlas)
+- npm or yarn
 
-## Core Modules
+### Installation
+
+**Backend Setup:**
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run dev
+```
+
+**Frontend Setup:**
+```bash
+cd frontend
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+**Access the application:**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000/api
+
+For detailed setup instructions, see [SETUP.md](SETUP.md)
+
+## 📋 Core Modules
 
 ### Patient Module
-
-- Register patient
+- ✅ Patient registration and login
+- ✅ Profile management
 - View medical history
+- Track appointments
+- Manage prescriptions
 
 ### Doctor Module
-
-- Doctor profile management
+- ✅ Doctor registration and login
+- ✅ Profile management
 - Schedule management
+- View appointments
+- Create prescriptions
 
 ### Appointment Module
-
-- Book appointment
-- Cancel/reschedule
+- Book appointments
+- View appointment history
+- Cancel/reschedule appointments
+- Doctor availability check
 
 ### Prescription Module
-
-- Add prescription
-- Manage medicines and dosage
+- ✅ Create prescriptions
+- ✅ Manage medicines and dosage
+- View prescription history
+- Track medication status
 
 ### Authentication Module
+- ✅ Login / Signup
+- ✅ Role-based access (Patient, Doctor, Admin)
+- ✅ JWT authentication
+- ✅ Password hashing
 
-- Login / Signup
-- Role-based access (Admin, Doctor, Patient)
-
-## Tech Stack
+## 🛠 Tech Stack
 
 ### Frontend
-
-- React.js
-- Tailwind CSS
-- Context API / Redux
+- **React.js** - UI framework
+- **Vite** - Build tool & dev server
+- **Tailwind CSS** - Utility-first CSS
+- **Axios** - HTTP client
+- **React Router** - Routing
+- **Context API** - State management
 
 ### Backend
+- **Node.js** - Runtime
+- **Express.js** - Web framework
+- **MongoDB** - NoSQL database
+- **Mongoose** - ODM
+- **JWT** - Authentication
+- **bcryptjs** - Password hashing
+- **CORS** - Cross-origin requests
+- **Express Validator** - Input validation
 
-- Node.js
-- Express.js
+### Tools & Services
+- **Git & GitHub** - Version control
+- **Postman** - API testing
+- **Render** - Backend deployment (recommended)
+- **Vercel/Netlify** - Frontend deployment
+- **MongoDB Atlas** - Cloud database
 
 ### Database
 
