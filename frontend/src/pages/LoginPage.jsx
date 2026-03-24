@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import apiClient from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -7,6 +9,9 @@ const LoginPage = () => {
   const [role, setRole] = useState('patient');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,11 +22,14 @@ const LoginPage = () => {
       const endpoint = role === 'patient' ? '/auth/login/patient' : '/auth/login/doctor';
       const response = await apiClient.post(endpoint, { email, password });
       
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data[role]));
+      // Use the AuthContext login method
+      const userData = response.data[role];
+      const token = response.data.token;
+      
+      login(userData, token, role);
       
       // Redirect to dashboard
-      window.location.href = '/' + role + '/dashboard';
+      navigate(`/${role}/dashboard`);
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
     } finally {
