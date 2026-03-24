@@ -319,6 +319,15 @@ const DoctorRegisterPage = () => {
                     {passwordStrength.score <= 2 ? 'Weak' : passwordStrength.score <= 3 ? 'Fair' : 'Strong'}
                   </span>
                 </div>
+                {passwordStrength.feedback.length > 0 && (
+                  <ul className="text-xs text-gray-600 space-y-1">
+                    {passwordStrength.feedback.map((item, idx) => (
+                      <li key={idx} className="flex items-center gap-1">
+                        <span>•</span> {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )}
 

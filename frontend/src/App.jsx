@@ -12,6 +12,10 @@ import DashboardPage from './pages/DashboardPage'
 import DoctorsPage from './pages/DoctorsPage'
 import PatientRegisterPage from './pages/PatientRegisterPage'
 import DoctorRegisterPage from './pages/DoctorRegisterPage'
+import PatientDashboard from './pages/PatientDashboard'
+import PatientProfileView from './pages/PatientProfileView'
+import PatientProfileEdit from './pages/PatientProfileEdit'
+import MedicalHistoryView from './pages/MedicalHistoryView'
 import './App.css'
 
 function App() {
@@ -38,7 +42,19 @@ function App() {
                   />
                   <Route
                     path="/patient/dashboard"
-                    element={<ProtectedRoute element={<DashboardPage />} allowedRoles="patient" />}
+                    element={<ProtectedRoute element={<PatientDashboard />} allowedRoles="patient" />}
+                  />
+                  <Route
+                    path="/patient/profile"
+                    element={<ProtectedRoute element={<PatientProfileView />} allowedRoles="patient" />}
+                  />
+                  <Route
+                    path="/patient/profile/edit"
+                    element={<ProtectedRoute element={<PatientProfileEdit />} allowedRoles="patient" />}
+                  />
+                  <Route
+                    path="/patient/medical-history"
+                    element={<ProtectedRoute element={<MedicalHistoryView />} allowedRoles="patient" />}
                   />
                   <Route
                     path="/doctor/dashboard"
