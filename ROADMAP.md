@@ -122,17 +122,17 @@
 
 ---
 
-### Phase 4: Prescription System ⏳ TODO
+### Phase 4: Prescription System ⏳ IN PROGRESS
 **Objectives**: Manage prescriptions and medications
 
 **Backend Features**:
-- [ ] Create prescription
-- [ ] Get prescriptions (with filtering)
-- [ ] Get prescription by ID
-- [ ] Get prescriptions by patient
-- [ ] Update prescription
-- [ ] Delete prescription
-- [ ] Prescription expiry tracking
+- [x] Create prescription
+- [x] Get prescriptions (with filtering)
+- [x] Get prescription by ID
+- [x] Get prescriptions by patient
+- [x] Update prescription
+- [x] Delete prescription
+- [x] Prescription expiry tracking
 - [ ] Medication alerts
 
 **Frontend Features**:

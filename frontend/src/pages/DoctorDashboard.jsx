@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useDoctor } from '../context/DoctorContext';
+import { usePrescription } from '../context/PrescriptionContext';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Card from '../components/Card';
 import ErrorMessage from '../components/ErrorMessage';
@@ -25,8 +26,11 @@ const DoctorDashboard = () => {
     fetchDoctorPatients,
   } = useDoctor();
 
+  const { fetchPrescriptions, getActivePrescriptions } = usePrescription();
+
   const [appointments, setAppointments] = useState([]);
   const [patients, setPatients] = useState([]);
+  const [prescriptions, setPrescriptions] = useState([]);
   const [appointmentsLoading, setAppointmentsLoading] = useState(false);
   const [appointmentsError, setAppointmentsError] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
@@ -53,10 +57,15 @@ const DoctorDashboard = () => {
           console.error('Failed to fetch patients:', err);
           return [];
         }),
+        fetchPrescriptions({ doctorId: currentDoctor._id }).catch((err) => {
+          console.error('Failed to fetch prescriptions:', err);
+          return [];
+        }),
       ])
-        .then(([appts, pats]) => {
+        .then(([appts, pats, presc]) => {
           setAppointments(appts || []);
           setPatients(pats || []);
+          setPrescriptions(presc || []);
         })
         .catch((err) => {
           setAppointmentsError(err.message || 'Failed to load data');
@@ -115,6 +124,8 @@ const DoctorDashboard = () => {
     return new Date(appt.date) > new Date();
   });
 
+  const prescriptionsCount = prescriptions.length;
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -164,6 +175,13 @@ const DoctorDashboard = () => {
             icon="⏰"
             className="cursor-pointer hover:shadow-md transition-shadow"
             onClick={() => navigate('/appointments')}
+          />
+          <Card
+            title="Active Prescriptions"
+            value={prescriptionsCount}
+            icon="💊"
+            className="cursor-pointer hover:shadow-md transition-shadow"
+            onClick={() => navigate('/prescriptions')}
           />
           <Card
             title="Years of Experience"
@@ -277,6 +295,12 @@ const DoctorDashboard = () => {
               className="flex items-center justify-center px-4 py-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg transition-colors"
             >
               👤 View Profile
+            </button>
+            <button
+              onClick={() => navigate('/prescriptions/create')}
+              className="flex items-center justify-center px-4 py-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg transition-colors"
+            >
+              💊 Create Prescription
             </button>
             <button
               onClick={() => navigate('/doctor/schedule')}

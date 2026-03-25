@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext'
 import { PatientProvider } from './context/PatientContext'
 import { DoctorProvider } from './context/DoctorContext'
 import { AppointmentProvider } from './context/AppointmentContext'
+import { PrescriptionProvider } from './context/PrescriptionContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
 import HomePage from './pages/HomePage'
@@ -25,6 +26,9 @@ import AppointmentBookingForm from './pages/AppointmentBookingForm'
 import AppointmentListView from './pages/AppointmentListView'
 import AppointmentConfirmationPage from './pages/AppointmentConfirmationPage'
 import AppointmentCalendarView from './pages/AppointmentCalendarView'
+import PrescriptionCreationForm from './pages/PrescriptionCreationForm'
+import PrescriptionListView from './pages/PrescriptionListView'
+import PrescriptionDetailView from './pages/PrescriptionDetailView'
 import './App.css'
 
 function App() {
@@ -33,11 +37,12 @@ function App() {
       <PatientProvider>
         <DoctorProvider>
           <AppointmentProvider>
-            <Router>
-              <div className="min-h-screen flex flex-col">
-                <Header />
-                <main className="flex-grow">
-                  <Routes>
+            <PrescriptionProvider>
+              <Router>
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-grow">
+                    <Routes>
                   {/* Public Routes */}
                   <Route path="/" element={<HomePage />} />
                   <Route path="/login" element={<LoginPage />} />
@@ -100,11 +105,26 @@ function App() {
                     path="/appointments/:id"
                     element={<ProtectedRoute element={<AppointmentConfirmationPage />} allowedRoles={['patient', 'doctor']} />}
                   />
+
+                  {/* Prescription Routes */}
+                  <Route
+                    path="/prescriptions"
+                    element={<ProtectedRoute element={<PrescriptionListView />} allowedRoles={['patient', 'doctor']} />}
+                  />
+                  <Route
+                    path="/prescriptions/create"
+                    element={<ProtectedRoute element={<PrescriptionCreationForm />} allowedRoles="doctor" />}
+                  />
+                  <Route
+                    path="/prescriptions/:id"
+                    element={<ProtectedRoute element={<PrescriptionDetailView />} allowedRoles={['patient', 'doctor']} />}
+                  />
                 </Routes>
               </main>
               <Footer />
             </div>
           </Router>
+          </PrescriptionProvider>
           </AppointmentProvider>
         </DoctorProvider>
       </PatientProvider>
