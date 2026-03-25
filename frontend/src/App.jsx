@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import { AuthProvider } from './context/AuthContext'
 import { PatientProvider } from './context/PatientContext'
 import { DoctorProvider } from './context/DoctorContext'
+import { AppointmentProvider } from './context/AppointmentContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
 import HomePage from './pages/HomePage'
@@ -16,6 +17,14 @@ import PatientDashboard from './pages/PatientDashboard'
 import PatientProfileView from './pages/PatientProfileView'
 import PatientProfileEdit from './pages/PatientProfileEdit'
 import MedicalHistoryView from './pages/MedicalHistoryView'
+import DoctorDashboard from './pages/DoctorDashboard'
+import DoctorProfileView from './pages/DoctorProfileView'
+import DoctorProfileEdit from './pages/DoctorProfileEdit'
+import DoctorScheduleManager from './pages/DoctorScheduleManager'
+import AppointmentBookingForm from './pages/AppointmentBookingForm'
+import AppointmentListView from './pages/AppointmentListView'
+import AppointmentConfirmationPage from './pages/AppointmentConfirmationPage'
+import AppointmentCalendarView from './pages/AppointmentCalendarView'
 import './App.css'
 
 function App() {
@@ -23,11 +32,12 @@ function App() {
     <AuthProvider>
       <PatientProvider>
         <DoctorProvider>
-          <Router>
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              <main className="flex-grow">
-                <Routes>
+          <AppointmentProvider>
+            <Router>
+              <div className="min-h-screen flex flex-col">
+                <Header />
+                <main className="flex-grow">
+                  <Routes>
                   {/* Public Routes */}
                   <Route path="/" element={<HomePage />} />
                   <Route path="/login" element={<LoginPage />} />
@@ -58,13 +68,44 @@ function App() {
                   />
                   <Route
                     path="/doctor/dashboard"
-                    element={<ProtectedRoute element={<DashboardPage />} allowedRoles="doctor" />}
+                    element={<ProtectedRoute element={<DoctorDashboard />} allowedRoles="doctor" />}
+                  />
+                  <Route
+                    path="/doctor/profile"
+                    element={<ProtectedRoute element={<DoctorProfileView />} allowedRoles="doctor" />}
+                  />
+                  <Route
+                    path="/doctor/profile/edit"
+                    element={<ProtectedRoute element={<DoctorProfileEdit />} allowedRoles="doctor" />}
+                  />
+                  <Route
+                    path="/doctor/schedule"
+                    element={<ProtectedRoute element={<DoctorScheduleManager />} allowedRoles="doctor" />}
+                  />
+
+                  {/* Appointment Routes */}
+                  <Route
+                    path="/appointments/book"
+                    element={<ProtectedRoute element={<AppointmentBookingForm />} allowedRoles={['patient', 'doctor']} />}
+                  />
+                  <Route
+                    path="/appointments"
+                    element={<ProtectedRoute element={<AppointmentListView />} allowedRoles={['patient', 'doctor']} />}
+                  />
+                  <Route
+                    path="/appointments/calendar"
+                    element={<ProtectedRoute element={<AppointmentCalendarView />} allowedRoles={['patient', 'doctor']} />}
+                  />
+                  <Route
+                    path="/appointments/:id"
+                    element={<ProtectedRoute element={<AppointmentConfirmationPage />} allowedRoles={['patient', 'doctor']} />}
                   />
                 </Routes>
               </main>
               <Footer />
             </div>
           </Router>
+          </AppointmentProvider>
         </DoctorProvider>
       </PatientProvider>
     </AuthProvider>

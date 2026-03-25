@@ -199,7 +199,7 @@ const PatientDashboard = () => {
                   </div>
                   <p className="text-sm text-gray-600">Scheduled</p>
                   <button
-                    onClick={() => navigate('/patient/appointments')}
+                    onClick={() => navigate('/appointments')}
                     className="mt-4 text-blue-600 hover:text-blue-700 font-medium text-sm underline"
                   >
                     View All →
@@ -336,7 +336,7 @@ const PatientDashboard = () => {
               <div className="text-center py-8">
                 <p className="text-gray-600">No upcoming appointments</p>
                 <button
-                  onClick={() => navigate('/patient/book-appointment')}
+                  onClick={() => navigate('/appointments/book')}
                   className="mt-4 text-blue-600 hover:text-blue-700 font-medium underline"
                 >
                   Schedule an appointment
