@@ -22,10 +22,16 @@ pnpm-debug.log*
 dist/
 build/
 .next/
+frontend/dist/
+frontend/build/
+backend/dist/
+backend/build/
 
 # Testing
 coverage/
 .nyc_output/
+frontend/coverage/
+backend/coverage/
 
 # Logs
 logs/

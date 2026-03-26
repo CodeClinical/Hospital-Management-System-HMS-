@@ -271,7 +271,7 @@ const AppointmentBookingForm = () => {
                 {doctorsLoading ? (
                   <option disabled>Loading doctors...</option>
                 ) : (
-                  doctors.map((doctor) => (
+                  (Array.isArray(doctors) ? doctors : []).map((doctor) => (
                     <option key={doctor._id} value={doctor._id}>
                       Dr. {doctor.firstName} {doctor.lastName} - {doctor.speciality}
                     </option>

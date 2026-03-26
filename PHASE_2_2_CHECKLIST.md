@@ -365,3 +365,7 @@
 5. **Implement loading states explicitly** - Users need feedback
 6. **Keep forms DRY** - Use FormInput component for all fields
 7. **Test mobile responsive early** - Don't leave until end
+
+
+## Maintenance log
+Project tree was cleared and all markdown files were updated on 2026-03-26.

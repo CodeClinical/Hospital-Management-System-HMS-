@@ -425,3 +425,7 @@ After completing all tests above:
 - Check Network tab in DevTools to see API calls being made
 - If API errors occur, check backend logs: `docker-compose logs -f backend`
 - For styling issues, right-click and "Inspect" element to see applied CSS classes
+
+
+## Maintenance log
+Project tree was cleared and all markdown files were updated on 2026-03-26.
